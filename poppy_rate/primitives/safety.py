@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from pypot.primitive import LoopPrimitive
+import subprocess
 
 class CustomTemperatureMonitor(LoopPrimitive):
     '''
@@ -15,7 +16,7 @@ class CustomTemperatureMonitor(LoopPrimitive):
         On MacOS "Darwin" you can use "afplay" for player
         On windows vista+, you can maybe use "start wmplayer"
         '''
-    def __init__(self, robot, freq=0.5, temp_limit=50, 
+    def __init__(self, robot, freq=0.5, temp_limit=40, 
                  time_reduce_torque=30, small_torque=45, 
                  time_compliant=90, player='aplay', sound=None):
         
