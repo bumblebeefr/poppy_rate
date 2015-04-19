@@ -6,10 +6,10 @@ To use the notesbooks juste clone this project
 
 To install it as a python lib:
 
-    pip install git+https://github.com/bumblebeefr/poppy_rate.git#egg=poppy_rate
+    pip install -e git+https://github.com/bumblebeefr/poppy_rate.git#egg=poppy_rate
 
 --
-I you want to install last version of pypot and poppy_humanoid from git with pip :
+I you want to install last version of pypot and poppy_humanoid from github with pip (uncomment to install libs in ~/dev/):
 
-    pip install git+https://github.com/poppy-project/pypot.git#egg=pypot
-    pip install 'git+https://github.com/poppy-project/poppy-humanoid.git#egg=poppy_humanoid&subdirectory=software'
+    pip install -e git+https://github.com/poppy-project/pypot.git#egg=pypot #--src=~/dev/
+    pip install -e svn+https://github.com/poppy-project/poppy-humanoid/trunk/software#egg=poppy_humanoid #--src=~/dev/
