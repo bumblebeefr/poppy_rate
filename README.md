@@ -11,5 +11,5 @@ To install it as a python lib:
 --
 I you want to install last version of pypot and poppy_humanoid from github with pip (uncomment to install libs in ~/dev/):
 
-    pip install -e git+https://github.com/poppy-project/pypot.git#egg=pypot #--src=~/dev/
-    pip install -e svn+https://github.com/poppy-project/poppy-humanoid/trunk/software#egg=poppy_humanoid #--src=~/dev/
+    pip install -e git+https://github.com/poppy-project/pypot.git#egg=pypot #--src=/home/$USER/dev/
+    pip install -e svn+https://github.com/poppy-project/poppy-humanoid/trunk/software#egg=poppy_humanoid #--src=/home/$USER/dev/
