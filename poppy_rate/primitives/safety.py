@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from pypot.primitive import LoopPrimitive
 import subprocess
+import pypot
 
 class CustomTemperatureMonitor(LoopPrimitive):
     '''
@@ -17,10 +18,10 @@ class CustomTemperatureMonitor(LoopPrimitive):
         On windows vista+, you can maybe use "start wmplayer"
         '''
     def __init__(self, robot, freq=0.5, temp_limit=40, 
-                 time_reduce_torque=30, small_torque=45, 
-                 time_compliant=90, player='aplay', sound=None):
+                 time_reduce_torque=5, small_torque=20, 
+                 time_compliant=10, player='aplay', sound=None):
         
-        pypot.primitive.LoopPrimitive.__init__(self, robot, freq)
+        LoopPrimitive.__init__(self, robot, freq)
 
         self.temp_limit = temp_limit
         self.time_reduce_torque = time_reduce_torque
