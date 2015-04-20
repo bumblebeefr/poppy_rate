@@ -1,0 +1,15 @@
+#ipyhon notebook dependecies
+
+ipython
+pyzmq
+jinja2
+tornado
+jsonschema
+
+
+#Poppy dependencies
+
+#-e git+https://github.com/poppy-project/pypot.git#egg=pypot
+-e git+https://github.com/mac-call/pypot.git#egg=pypot
+-e local.lib/poppy-humanoid/software/
+poppy-ergo
