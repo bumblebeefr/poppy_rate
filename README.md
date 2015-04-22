@@ -1,7 +1,9 @@
 # poppy_rate
 *Python notebooks an custom libs created when playing with @carrnum's Poppy Robot* 
+![Trunk Assembled](img/poppy_reveur.jpg)
 
 [Preview Notebooks](http://nbviewer.ipython.org/github/bumblebeefr/poppy_rate/tree/master/)
+
 --
 To use the notesbooks juste clone this project
 
