@@ -1,5 +1,4 @@
 #ipyhon notebook dependecies
-
 ipython
 pyzmq
 jinja2
@@ -10,7 +9,6 @@ matplotlib
 
 #Poppy dependencies
 zerorpc
-#-e git+https://github.com/poppy-project/pypot.git#egg=pypot
--e git+https://github.com/mac-call/pypot.git#egg=pypot
--e local.lib/poppy-humanoid/software/
+-e git+https://github.com/poppy-project/pypot.git#egg=pypot
+-e svn+https://github.com/poppy-project/poppy-humanoid/trunk/software#egg=poppy_humanoid
 poppy-ergo
