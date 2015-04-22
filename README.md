@@ -1,4 +1,4 @@
-# poppy_rate
+# Poppyrate
 *Python notebooks an custom libs created when playing with @carrnum's Poppy Robot* 
 ![Trunk Assembled](img/poppy_reveur.jpg)
 
