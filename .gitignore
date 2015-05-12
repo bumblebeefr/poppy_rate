@@ -1,3 +1,4 @@
 /.ipynb_checkpoints
 local.virtualenv
 local.lib
+/local.virtualenv.bak
