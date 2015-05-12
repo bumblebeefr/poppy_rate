@@ -1,1 +1,1 @@
-from .poppy_rate import hookAndPegLeg
+from .poppy_rate import PoppyRate

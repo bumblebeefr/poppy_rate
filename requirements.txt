@@ -1,4 +1,4 @@
-#ipyhon notebook dependecies
+#ipyhon notebook dependencies
 ipython
 pyzmq
 jinja2
@@ -6,9 +6,12 @@ tornado
 jsonschema
 matplotlib
 
+#other dependencies
+zerorpc
 
 #Poppy dependencies
-zerorpc
--e git+https://github.com/poppy-project/pypot.git#egg=pypot
+#-e git+https://github.com/poppy-project/pypot.git#egg=pypot
+-e git+https://github.com/bumblebeefr/pypot#egg=pypot
 -e svn+https://github.com/poppy-project/poppy-humanoid/trunk/software#egg=poppy_humanoid
+-e svn+https://github.com/poppy-project/poppy-creature/trunk/software#egg=poppy_creature
 poppy-ergo

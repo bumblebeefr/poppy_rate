@@ -1,5 +1,12 @@
-from pypot.primitive import Primitive
+import logging
+import os
 from poppy_humanoid import PoppyHumanoid
+from poppy_humanoid.primitives.dance import SimpleBodyBeatMotion
+from pypot.primitive import Primitive
+from subprocess import Popen
+import subprocess
+from types import MethodType
+import random
 
 
 def _mirror_position(position):
@@ -30,3 +37,45 @@ class SayHello(Primitive):
 
         for m, c in motor_state.items():
             self.robot.__dict__.get(m).compliant = c
+
+
+def _soundplayer(directory, sound):
+    def player(self):
+        self._sound = os.path.join(directory, "%s.ogg" % sound)
+        self.start()
+        #print(['ogg123', os.path.join(directory, sound)])
+        #ogg123 = Popen(['ogg123', os.path.join(directory, "%s.ogg" % sound)])
+        # ogg123.wait()
+    return player
+
+
+class PlaySound(Primitive):
+
+    def __init__(self, *args, **kwargs):
+        logging.info(self)
+        Primitive.__init__(self, *args, **kwargs)
+        self.directory = os.path.join(os.path.split(os.path.dirname(os.path.abspath(__file__)))[0], 'media', 'sounds')
+        self.properties = []
+        self._sound = None
+        self.update_sound_list()
+
+    def update_sound_list(self):
+        self.sounds = sorted([f[:-4] for f in os.listdir(self.directory) if f.endswith('.ogg')])
+        self.methods = ['start', 'stop', 'update_sound_list'] + ['play_{}'.format(sound) for sound in self.sounds]
+        for sound in self.sounds:
+            setattr(self, 'play_{}'.format(sound), MethodType(_soundplayer(self.directory, sound), self, type(self)))
+
+    def run(self):
+        if(self._sound):
+            ogg123 = Popen(['ogg123', self._sound])
+            self._sound = None
+            ogg123.wait()
+        elif self.sounds:
+            Popen(['ogg123', os.path.join(self.directory, "%s.ogg" % random.choice(self.sounds))]).wait()
+
+
+class SimpleDance(SimpleBodyBeatMotion):
+
+    def __init__(self, *args, **kwargs):
+        SimpleBodyBeatMotion.__init__(self, *args, **kwargs )
+        self.properties = ['bpm', 'amplitude']
