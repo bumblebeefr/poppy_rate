@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='poppy-rate',
-    version='0.0.2',
+    version='0.0.3',
     packages=find_packages(),
     install_requires=['pypot', 'poppy_humanoid'],
     zip_safe=False,
