@@ -1,0 +1,2 @@
+include poppy_rate/media/sounds/*
+include poppy_rate/configuration/*.json
