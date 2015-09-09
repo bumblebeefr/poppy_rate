@@ -3,9 +3,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='poppy-rate',
-    version='0.0.4',
+    version='0.0.5',
     packages=find_packages(),
-    install_requires=['pypot', 'poppy_humanoid'],
+    install_requires=['pypot', 'poppy_humanoid', 'poppy-creature'],
+    include_package_data=True,
+    exclude_package_data={'': ['README', '.gitignore']},
     zip_safe=False,
     author='Bumblebee',
     author_email='git@bumblebee.cc',
