@@ -60,7 +60,10 @@ class PlaySound(Primitive):
         self.update_sound_list()
 
     def update_sound_list(self):
-        self.sounds = sorted([f[:-4] for f in os.listdir(self.directory) if f.endswith('.ogg')])
+        try:
+            self.sounds = sorted([f[:-4] for f in os.listdir(self.directory) if f.endswith('.ogg')])
+        except:
+            self.sounds = []
         self.methods = ['start', 'stop', 'update_sound_list'] + ['play_{}'.format(sound) for sound in self.sounds]
         for sound in self.sounds:
             setattr(self, 'play_{}'.format(sound), MethodType(_soundplayer(self.directory, sound), self, type(self)))
@@ -77,5 +80,5 @@ class PlaySound(Primitive):
 class SimpleDance(SimpleBodyBeatMotion):
 
     def __init__(self, *args, **kwargs):
-        SimpleBodyBeatMotion.__init__(self, *args, **kwargs )
+        SimpleBodyBeatMotion.__init__(self, *args, **kwargs)
         self.properties = ['bpm', 'amplitude']
