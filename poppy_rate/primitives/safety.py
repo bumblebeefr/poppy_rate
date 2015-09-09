@@ -3,24 +3,27 @@ from pypot.primitive import LoopPrimitive
 import subprocess
 import pypot
 
+
 class CustomTemperatureMonitor(LoopPrimitive):
+
     '''
         This primitive raises an alert by playing a sound when the temperature
         of one motor reaches the "temp_limit".
-        
+
         If a motor reaches the limit since more than "time_reduce_torque" seconds
         the torc of this motor will be reduced to "small_torque".
-        
+
         If a motor reaches the limit since more than "time_compliant" seconds
         this motor will be made compliant.
 
         On MacOS "Darwin" you can use "afplay" for player
         On windows vista+, you can maybe use "start wmplayer"
         '''
-    def __init__(self, robot, freq=0.5, temp_limit=40, 
-                 time_reduce_torque=5, small_torque=20, 
+
+    def __init__(self, robot, freq=0.5, temp_limit=40,
+                 time_reduce_torque=5, small_torque=20,
                  time_compliant=10, player='aplay', sound=None):
-        
+
         LoopPrimitive.__init__(self, robot, freq)
 
         self.temp_limit = temp_limit
@@ -54,15 +57,15 @@ class CustomTemperatureMonitor(LoopPrimitive):
 
         if len(motor_list) > 0:
             self.raise_problem(motor_list)
-        
-        for m,t in self._overheat_time.items():
-            if (datetime.now() - t) > timedelta(seconds = self.time_compliant):
+
+        for m, t in self._overheat_time.items():
+            if (datetime.now() - t) > timedelta(seconds=self.time_compliant):
                 print('/!\ Making {} compliant !'.format(m.name))
                 m.compliant = True
 
-            elif(datetime.now() - t) > timedelta(seconds = self.time_reduce_torque):
-                print('/!\ Reducing torque of {} to {}'.format(m.name,min(m.torque_limit,self.small_torque)))
-                m.torque_limit = min(m.torque_limit,self.small_torque)
+            elif(datetime.now() - t) > timedelta(seconds=self.time_reduce_torque):
+                print('/!\ Reducing torque of {} to {}'.format(m.name, min(m.torque_limit, self.small_torque)))
+                m.torque_limit = min(m.torque_limit, self.small_torque)
 
     def raise_problem(self, motor_list):
         subprocess.call([self.player, self.sound])
@@ -70,8 +73,9 @@ class CustomTemperatureMonitor(LoopPrimitive):
         for m in motor_list:
             print('{} overheating: {}'.format(m.name, m.present_temperature))
 
-            
+
 class TemperatureLogger(LoopPrimitive):
+
     def __init__(self, robot, freq=5):
         LoopPrimitive.__init__(self, robot, freq)
 
@@ -79,7 +83,7 @@ class TemperatureLogger(LoopPrimitive):
     def setup(self):
         self.temp_min = []
         self.temp_max = []
-       
+
     # This method will be called at the predefined frequency
     def update(self):
         self.temp_min.append(min([m.present_temperature for m in self.robot.motors]))

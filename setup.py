@@ -2,8 +2,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='poppy_rate',
-    version='0.0.1',
+    name='poppy-rate',
+    version='0.0.2',
     packages=find_packages(),
     install_requires=['pypot', 'poppy_humanoid'],
     zip_safe=False,
