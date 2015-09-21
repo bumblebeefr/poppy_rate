@@ -1,5 +1,5 @@
 # Poppyrate
-*Python notebooks an custom libs created when playing with @carrnum's Poppy Robot* 
+*Python notebooks an custom libs created when playing with [@carrnum's Poppy Robot](http://carrefour-numerique.cite-sciences.fr/fablab/wiki/doku.php?id=projets:poppy:poppyrate)* 
 ![Trunk Assembled](img/poppy_reveur.jpg)
 
 [Preview Notebooks](http://nbviewer.ipython.org/github/bumblebeefr/poppy_rate/tree/master/)
